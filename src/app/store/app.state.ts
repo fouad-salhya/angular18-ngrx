@@ -1,13 +1,11 @@
-export interface User {
-    id?: number;
-    name: string;
-    email: string;
-    phone?:string;
-  }
-  
-  export interface UserState {
-    list: User[];
-    selectedUser: User | null;
-    errorMessage: string | null;
-  }
-  
+import { UserState } from './users/user.model';
+
+import { userSlice } from './users/user.reducer';
+
+export interface AppStore {
+  counter: UserState;
+}
+
+export const store = {
+  user: userSlice,
+};

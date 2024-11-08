@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
 
+  private userService = inject(UserService)
+
+  ngOnInit(): void {
+     this.userService.getUsers()
+         .subscribe(
+          {
+          next: (res) => {
+           console.log(res)
+         },
+         error: (err) => console.log(err.err)
+        })
+  }
 }

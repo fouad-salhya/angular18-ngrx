@@ -8,7 +8,7 @@ export const initialState: UserState = {
   errorMessage: ''
 };
 
-export const userReducer = createReducer(
+const userReducer = createReducer(
   initialState,
 
   on(UserActions.loadAllUsersSuccess, (state, { list }) => ({
@@ -61,3 +61,8 @@ export const userReducer = createReducer(
     errorMessage: error
   }))
 );
+
+export const userSlice = {
+  name: 'user',
+  reducer: userReducer,
+};
