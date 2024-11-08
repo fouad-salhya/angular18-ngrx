@@ -1,16 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { UserState } from './user.model';
+import { initUserState } from './user.model';
 import * as UserActions from './user.actions';
 
-export const initialState: UserState = {
-  list: [],
-  selectedUser: null,
-  errorMessage: ''
-};
 
 const userReducer = createReducer(
-  initialState,
-
+  initUserState,
   on(UserActions.loadAllUsersSuccess, (state, { list }) => ({
     ...state,
     list
